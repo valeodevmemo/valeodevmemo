@@ -1,10 +1,10 @@
-#include <stdio.h> //biblioteca de comunicaÁ„o com o usu·rio
-#include <stdlib.h> //biblioteca de alocaÁ„o de espaÁo em memÈria
-#include <locale.h> //biblioteca de alocaÁıes de texto por regiıes
-#include <string.h> //biblioteca respons·vel por cuidar das strings
+#include <stdio.h> //biblioteca de comunica√ß√£o com o usu√°rio
+#include <stdlib.h> //biblioteca de aloca√ß√£o de espa√ßo em mem√©ria
+#include <locale.h> //biblioteca de aloca√ß√µes de texto por regi√µes
+#include <string.h> //biblioteca respons√°vel por cuidar das strings
 
 int registro()// int registro
-{// inicio de criaÁ„o de variaveis - strings
+{// inicio de cria√ß√£o de variaveis - strings
 	
 	char arquivo[40];
 	char cpf[40];
@@ -12,11 +12,11 @@ int registro()// int registro
 	char sobrenome[40];
 	char cargo[40];
 	
-	printf("Digite o N˙mero do CPF a Ser Cadastrado: ");
+	printf("Digite o N√∫mero do CPF a Ser Cadastrado: ");
 	
-	scanf("%s", cpf);//%s strings armazenar
+	scanf("%s", cpf);//%s strings a armazenar
 
-	strcpy(arquivo, cpf); //respons·vel por copiar os valores das strings
+	strcpy(arquivo, cpf); //respons√°vel por copiar os valores das strings do cpf para o arquivo
 	
 	FILE *file; //cria o arquivo	
 	file = fopen(arquivo,"w"); //cria o arquivo escrever
@@ -24,10 +24,10 @@ int registro()// int registro
 	fclose(file); //fecha o valor do cpf
 	
 	file = fopen(arquivo,"a");
-	fprintf(file,",");
+	fprintf(file,"");// Remo√ß√£o de uma v√≠rgula entre as √°spas
 	fclose(file);
 	
-	printf("DIgite o Nome a Ser Cadastrado: ");
+	printf("Digite o Nome a Ser Cadastrado: ");
 	scanf("%s",nome);
 	fclose(file);
 		
@@ -35,7 +35,7 @@ int registro()// int registro
 	fprintf(file,",");
 	fclose(file);
 		
-	printf("DIgite o Sobrenome a Ser Cadastrado: ");
+	printf("Digite o Sobrenome a Ser Cadastrado: ");
 	scanf("%s",sobrenome);
 
 	file = fopen(arquivo,"a");
@@ -55,16 +55,12 @@ int registro()// int registro
 	fclose(file);
 	
 	system("pause");
-	
-
-
-//	printf("Voc  Escolheu o Registro de Nomes!\n");
-//	system("pause");
 }
 
 int consulta()
+
 {
-	setlocale(LC_ALL, "Portuguese"); //Definindo a Linguagem
+	setlocale(LC_ALL, "Portuguese"); //Definindo a Linguagem Gramatical
 	
 	char cpf[40];
 	char conteudo[200];
@@ -77,72 +73,71 @@ int consulta()
 	
 	if (file == NULL)
 	{
-		printf("n„o foi PossÌvel abrir o Arquivo Localizado.\n");
+		printf("N√£o Foi Poss√≠vel Abrir o Arquivo Consultado.\n");
 	}
 		
 	while (fgets(conteudo, 200, file) != NULL);
 	{
-	
-	
-	printf("\nEssas s„o as informaÁıes do Usu·rios: ");
+		
+	printf("\nEssas s√£o as informa√ß√µes do Usu√°rio: ");
 	printf("%s", conteudo);
 	printf("\n\n");
+	system("pause");
 }
 	
-
-		printf("\nEssas s√£o as informa√ß√µes do usu√°rio: ");
-		printf("%s", conteudo);
-		printf("\n\n");
-		system("pause");
-
-	//printf("VocÍ Escolheu Consultar Nomes!\n");
-	//system("pause");
 }
 
 int deletar()
+
 {
 	char cpf[40];
 	
-	printf("Digite o CPF do Usu·rio a Ser Deletado:");
+	printf("Digite o CPF a Ser Deletado:");
 	scanf("%s",cpf);
 	
+	printf("As Informa√ß√µes Foram Deletadas Com Sucesso!!!");//Incerss√£o de mensagem
 	remove(cpf);
-	
+	system("pause");
+		
 	FILE *file;
 	file = fopen(cpf, "r");
 	
 	if(file == NULL)
-	{
-		printf("O Usu·rio n„o se encontra no Sistema.\n");
-		system("pause");
-	}
+	
+{
+	printf("O Usu√°rio n√£o se encontra no Cadastro.\n");//Mudan√ßa de mensagem
+	system("pause");
+}
 	
 }
 
 int main()
+
 {
 	
-	int opcao=0; //Definindo Vari·veis
+	int opcao=0; //Definindo Vari√°veis
 	int laco=1;
 	
 	for(laco=1;laco=1;)
 {
 
-		system("cls");
+	system("cls");
 		
-		setlocale(LC_ALL, "Portuguese"); //Definindo a Linguagem
-		printf("### cadastros afins ###\n\n"); //IÌnicio do Menu
-		printf("Escolha a OpÁ„o Desejada do Menu:\n\n");
-		printf("\t1 - Registrar Nomes:\n\n");
-		printf("\t2 - Consultar Nomes:\n\n");
-		printf("\t3 - Deletar Nomes: \n\n");
-		printf("OpÁ„o a Ser Escolhida: "); //Fim do Menu
-		
-		scanf("%d", &opcao); //armazenando da escolha do usuario
-		
-		system("cls");
+	setlocale(LC_ALL, "Portuguese"); //Definindo a Linguagem Gramatical
 	
-	switch(opcao) //InÌcio da seleÁ„o das funÁıes
+	printf("### Cadastros Afins ###\n\n"); //I√≠nicio do Menu
+	printf("Escolha a Op√ß√£o Desejada:\n\n");
+	printf("\t1 - Registrar Nomes:\n\n");
+	printf("\t2 - Consultar Nomes:\n\n");
+	printf("\t3 - Deletar Nomes: \n\n");
+	printf("\t4 - Sair do Cadastro!!!\n\n");
+	printf("\n### Escolha a Op√ß√£o Desejada:  "); //Fim do Menu
+		
+	scanf("%d", &opcao); //armazenando da escolha do usuario
+		
+	system("cls");
+	
+	switch(opcao) //In√≠cio da sele√ß√£o das fun√ß√µes
 	{
 		case 1:
 			registro();
@@ -155,9 +150,14 @@ int main()
 		case 3:
 			deletar();
 			break;
+
+		case 4:// Caso op√ß√£o 4
+			printf(\n Obrigado Por Utilizar O Cadastro!!!\n\n);//Mudan√ßa de mensagem
+			return 0;
+			break;
 		
 		default:
-			printf("Esta OpÁ„o N„o Est· DisponÌvel!\n");
+			printf("Esta Op√ß√£o N√£o Est√° Dispon√≠vel!\n");
 			system("pause");
 			break;
 			
