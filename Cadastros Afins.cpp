@@ -8,7 +8,7 @@ int registro()// int registro
 	
 	char arquivo[40];
 	char cpf[40];
-	char nome[40];
+	char nome[80];
 	char sobrenome[40];
 	char cargo[40];
 	
@@ -24,34 +24,34 @@ int registro()// int registro
 	fclose(file); //fecha o valor do cpf
 	
 	file = fopen(arquivo,"a");
-	fprintf(file,",");
+	fprintf(file,"");
 	fclose(file);
 	
 	printf("DIgite o Nome a Ser Cadastrado: ");
-	scanf("%s",nome);
+	scanf("%s", nome);
 	fclose(file);
 		
 	file = fopen(arquivo,"a");
-	fprintf(file,",");
+	fprintf(file, ",");
 	fclose(file);
 		
 	printf("DIgite o Sobrenome a Ser Cadastrado: ");
-	scanf("%s",sobrenome);
+	scanf("%s", sobrenome);
 
 	file = fopen(arquivo,"a");
-	fprintf(file,sobrenome);
+	fprintf(file, sobrenome);
 	fclose(file);
 	
 	file = fopen(arquivo,"a");
-	fprintf(file,",");
+	fprintf(file, ",");
 	fclose(file);
 			
 	printf("Digite o Cargo a Ser Cadastrado: ");
-	scanf("%s",cargo);
+	scanf("%s", cargo);
 	fclose(file);
 
 	file = fopen(arquivo,"a");
-	fprintf(file,cargo);
+	fprintf(file, cargo);
 	fclose(file);
 	
 	system("pause");
@@ -74,6 +74,7 @@ int consulta()
 	
 	FILE *file;
 	file = fopen(cpf,"r");
+
 	
 	if (file == NULL)
 	{
@@ -81,16 +82,11 @@ int consulta()
 	}
 		
 	while (fgets(conteudo, 200, file) != NULL);
-	{
-	
-	
-	printf("\nEssas s„o as informaÁıes do Usu·rios: ");
-	printf("%s", conteudo);
-	printf("\n\n");
-}
+{
 	
 
-		printf("\nEssas s√£o as informa√ß√µes do usu√°rio: ");
+}
+		printf("\n Dados Consultados: ");
 		printf("%s", conteudo);
 		printf("\n\n");
 		system("pause");
@@ -114,6 +110,7 @@ int deletar()
 	if(file == NULL)
 	{
 		printf("O Usu·rio n„o se encontra no Sistema.\n");
+	
 		system("pause");
 	}
 	
